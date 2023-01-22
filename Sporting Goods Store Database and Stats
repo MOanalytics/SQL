@@ -1,1 +1,22 @@
+CREATE TABLE sporting_goods_store (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, price INTEGER, aisle INTEGER);
+INSERT INTO sporting_goods_store VALUES(1, "footballs", 50, 8.99, 2);
+INSERT INTO sporting_goods_store VALUES(2, "baseballs", 100, 2.00, 2);
+INSERT INTO sporting_goods_store VALUES(3, "basketballs", 50, 7.99, 2);
+INSERT INTO sporting_goods_store VALUES(4, "football_gloves", 150, 15.99, 3);
+INSERT INTO sporting_goods_store VALUES(5, "baseball_gloves", 125, 18.99, 3);
+INSERT INTO sporting_goods_store VALUES(6, "football_helmet", 75, 35.99, 4);
+INSERT INTO sporting_goods_store VALUES(7, "baseball_helmet", 50, 26.99, 4);
+INSERT INTO sporting_goods_store VALUES(8, "football_jersey", 100, 15.99, 5);
+INSERT INTO sporting_goods_store VALUES(9, "baseball_jersey", 60, 17.99, 5);
+INSERT INTO sporting_goods_store VALUES(10, "basketball_jersey", 50, 16.99, 5);
+INSERT INTO sporting_goods_store VALUES(11, "water_bottle", 50, 11.99, 6);
+INSERT INTO sporting_goods_store VALUES(12, "cooler", 15, 65.99, 6);
+INSERT INTO sporting_goods_store VALUES(13, "powdered_gatorade", 30, 10.99, 6);
+INSERT INTO sporting_goods_store VALUES(14, "protein_powder", 25, 55.99, 6);
+INSERT INTO sporting_goods_store VALUES(15, "sunglasses", 125, 12.99, 1);
 
+SELECT * FROM sporting_goods_store WHERE price ORDER BY price;
+
+SELECT quantity, SUM (quantity) FROM sporting_goods_store;
+
+SELECT price, MAX (price) FROM sporting_goods_store;
