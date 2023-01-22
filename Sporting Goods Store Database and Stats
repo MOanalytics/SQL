@@ -17,6 +17,6 @@ INSERT INTO sporting_goods_store VALUES(15, "sunglasses", 125, 12.99, 1);
 
 SELECT * FROM sporting_goods_store WHERE price ORDER BY price;
 
-SELECT quantity, SUM (quantity) FROM sporting_goods_store;
+SELECT aisle, SUM (quantity) FROM sporting_goods_store GROUP BY aisle;
 
-SELECT price, MAX (price) FROM sporting_goods_store;
+SELECT MAX (price), MIN (price) FROM sporting_goods_store;
