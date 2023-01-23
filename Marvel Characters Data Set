@@ -61,6 +61,6 @@ END as "strength_level"
 FROM marvels
 ORDER BY strength;
 
-SELECT name FROM marvels WHERE intelligence >5 AND durability >5;
+SELECT name AS "smart_and_durable" FROM marvels WHERE intelligence >5 AND durability >5;
 
-SELECT name FROM marvels WHERE speed >7 OR energy_projection >6;
+SELECT name AS "fast_and_energy_projection" FROM marvels WHERE speed >7 OR energy_projection >6;
