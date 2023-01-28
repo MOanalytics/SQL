@@ -1,3 +1,8 @@
+CREATE TABLE famous_people (
+id INTEGER PRIMARY KEY,
+fullname TEXT,
+famous_type TEXT);
+
 INSERT into famous_people (fullname, famous_type) VALUES ("tom_holland", "actor");
 INSERT into famous_people (fullname, famous_type) VALUES ("zendaya", "actor");
 INSERT into famous_people (fullname, famous_type) VALUES ("paul_rudd", "actor");
