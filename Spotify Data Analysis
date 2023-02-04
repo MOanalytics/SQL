@@ -19,28 +19,28 @@ duration_ms integer NOT NULL,
 time_signature integer NOT NULL );
 
 
-Which song has the highest tempo?
+1. Which song has the highest tempo?
 SELECT track_name AS song, MAX(tempo)
 FROM BIT_DB.Spotifydata;
 
-What is the tempo of the most danceable song?
+2. What is the tempo of the most danceable song?
 SELECT track_name AS song, MAX(danceability), tempo
 FROM BIT_DB.Spotifydata;
 
-Who are the top 10 artists based on popularity?
+3. Who are the top 10 artists based on popularity?
 SELECT artist_name AS artist, popularity
 FROM BIT_DB.Spotifydata
 ORDER BY popularity desc
 LIMIT 10;
 
-Which artist on average has the most popular songs?
+4. Which artist on average has the most popular songs?
 SELECT artist_name AS artist, AVG(popularity)
 FROM BIT_DB.Spotifydata
 GROUP BY artist
 ORDER BY AVG(popularity) desc
 LIMIT 1;
 
-Which artists released the most and least popular songs?
+5. Which artists released the most and least popular songs?
 SELECT artist_name AS artist, track_name AS song, popularity
 FROM BIT_DB.Spotifydata
 WHERE popularity = (SELECT MIN(popularity) FROM BIT_DB.Spotifydata)
