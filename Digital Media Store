@@ -1,0 +1,68 @@
+1. Show Customers (their full names, customer ID, and country) who are not in the US. 
+
+SELECT customers.firstname || ' ' || customers.lastname AS Fullname, customers.customerid, customers.country
+FROM chinook.customers
+WHERE customers.country <> 'USA';
+
+2. What are the top 5 genres?
+
+SELECT genres.name AS 'genre', count(invoice_items.quantity)
+FROM chinook.genres
+
+JOIN chinook.tracks
+ON tracks.genreid = genres.genreid
+
+JOIN chinook.invoice_items
+ON invoice_items.trackid = tracks.trackid
+
+GROUP BY genres.name
+ORDER BY COUNT(invoice_items.quantity) desc limit 5;
+
+3. Who are the 3 most popular artists, and what are their genres?
+
+SELECT artists.name AS artist, genres.name AS genre
+FROM chinook.genres
+
+JOIN chinook.tracks
+ON tracks.genreid = genres.genreid
+
+JOIN chinook.invoice_items
+ON invoice_items.trackid = tracks.trackid
+
+JOIN chinook.albums
+ON albums.albumid = tracks.albumid
+
+JOIN chinook.artists
+ON artists.artistid = albums.artistid
+
+GROUP BY artist
+ORDER BY COUNT(invoice_items.quantity) desc limit 3;
+
+4. Provide a query that shows all tracks, their album name, artist, and genre.
+
+SELECT tracks.name AS track, albums.title AS album, artists.name AS artist, genres.name AS genre
+FROM chinook.tracks
+
+JOIN chinook.albums
+ON albums.albumid = tracks.albumid
+
+JOIN chinook.artists
+ON artists.artistid = albums.artistid
+
+JOIN chinook.genres
+ON genres.genreid = tracks.genreid;
+
+5. Which sales support agent made the most dollars in sales, and how much did they make?
+
+SELECT employees.FirstName || ' ' || employees.LastName AS FullName, ROUND(SUM(invoices.Total), 2) AS 'Total Sales'
+FROM chinook.employees
+
+JOIN chinook.customers
+ON customers.supportrepid = employees.employeeid
+
+JOIN chinook.invoices
+ON invoices.customerid = customers.customerid
+
+WHERE employees.title = 'Sales Support Agent'
+GROUP BY FullName
+ORDER BY 'Total Sales' desc limit 1;
